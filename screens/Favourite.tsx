@@ -12,9 +12,5 @@ export default function Favourite() {
         console.log(receivedTitle);
     });
 
-    return (
-        <View style={styles.container}>
-              
-        </View>
-    );
+    return <View style={favouriteStyles.container}></View>;
 }

@@ -1,4 +1,4 @@
-import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import { Button, ScrollView, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Card_holder from '../component/cardHolder';
 import { useState } from 'react';
@@ -66,21 +66,21 @@ export default function Home({ navigation }) {
      
     return (
         <ScrollView> 
-        <View style={styles.container}>
+        <View style={homeStyles.container}>
             <View>
                 <View>
                     <Text>
                         Let's Eat Something New
                     </Text>
                 </View>
-                <View style={styles.inputContainer}>
-                    <Icon style={styles.icon} name="search" size={27} />
-                    <TextInput style={styles.inputField}
+                <View style={homeStyles.inputContainer}>
+                    <Icon style={homeStyles.icon} name="search" size={27} />
+                    <TextInput style={homeStyles.inputField}
                         placeholder="Email" value={input} onChangeText={onChangeTextHandler} />
 
                 </View>
                 <View>
-                    <TouchableHighlight style={styles.Fav_btn} onPress={geting_asyncData}>
+                    <TouchableHighlight style={homeStyles.Fav_btn} onPress={geting_asyncData}>
                         <Text>
                             go to favourite
                         </Text>

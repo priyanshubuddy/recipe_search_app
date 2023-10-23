@@ -5,20 +5,57 @@ const cardHolderStyles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
+    margin: 20,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    padding: 10,
   },
   image: {
-    height: 50,
-    width: 50,
+    height: 120,
+    width: 120,
+    borderRadius: 10,
   },
-  btn: {
-    height: 30,
-    marginTop: 5,
+  id: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginVertical: 5,
+  },
+  title: {
+    fontSize: 18,
+  },
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+  },
+  favoriteIcon: {
+    color: "red",
+    fontSize: 27,
+  },
+  addToFavoriteButton: {
+    height: 40,
+    width: 120,
     backgroundColor: "green",
-    borderRadius: 5,
+    borderRadius: 20,
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: 150,
+  },
+  addToFavoriteButtonText: {
+    color: "#fff",
+  },
+  playIcon: {
+    color: "red",
+    fontSize: 27,
   },
 });
 

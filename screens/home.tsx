@@ -7,7 +7,7 @@ import homeStyles from "../styles/homeStyles";
 
 export default function Home({ navigation }) {
 
-    const apiKey = '522685f9cadb4914a6a1df4449c5140a';
+    const apiKey = "e3a82234c1884e42972f2f826637ed04";
     const apiUrl = 'https://api.spoonacular.com/recipes/complexSearch';
     const [input, setInput] = useState("");
     const [Data, setdata] = useState([]);

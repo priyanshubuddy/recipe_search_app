@@ -1,34 +1,41 @@
-import { StyleSheet, Image, Text, View } from "react-native";
+import React from "react";
+import { StyleSheet, Image, Text, View, ScrollView } from "react-native";
 import { useRoute } from "@react-navigation/native";
-import { useEffect, useState } from "react";
 import recipesStyles from "../styles/recipesStyles";
 
 export default function Recipes() {
   const route = useRoute();
-  const receivedTitle = route.params?.Title;
-  const receivedImage = route.params?.Image;
-  const receivedSummary = route.params?.Summary;
-  const receivedSourceUrl = route.params?.SourceUrl;
+  const recipeData = route.params?.recipeData;
 
   return (
-    <View style={recipesStyles.container}>
+    <ScrollView contentContainerStyle={recipesStyles.container}>
       <View>
         <View>
-          <Image style={recipesStyles.image} source={{ uri: receivedImage }} />
+          <Image
+            style={recipesStyles.image}
+            source={{ uri: recipeData.image }}
+          />
         </View>
         <View>
-          <Text>Name : {receivedTitle}</Text>
+          <Text style={recipesStyles.title}>Name: {recipeData.title}</Text>
         </View>
         <View>
-          <Text>Ingrident:</Text>
+          <Text style={recipesStyles.ingredients}>Ingredients:</Text>
+          {recipeData.extendedIngredients.map((ingredient, index) => (
+            <Text key={index}>{ingredient.original}</Text>
+          ))}
         </View>
+        {/* <View>
+          <Text style={recipesStyles.instructions}>
+            Instructions: {recipeData.instructions}
+          </Text>
+        </View> */}
         <View>
-          <Text>Instructions : {receivedSummary}</Text>
-        </View>
-        <View>
-          <Text>source link: {receivedSourceUrl}</Text>
+          <Text style={recipesStyles.sourceLink}>
+            Source link: {recipeData.spoonacularSourceUrl}
+          </Text>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }

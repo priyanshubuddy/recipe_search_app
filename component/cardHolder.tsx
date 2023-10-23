@@ -11,28 +11,23 @@ export default function Card_holder(props) {
     const id = props.data.id;
     const apiUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`;
      
-    const viewDetailPage = ()=>{
-        //navigation.navigate('Recipes');
-        fetch(apiUrl)
-            .then( response =>{
-                if(response.ok){
-                    return response.json();
-                }else{
-                    throw new Error('API request failed');
-                }
-            }).then(data =>{
-                 console.log(data);
-                // setRecipestitle(data.title);
-                // setRecipesimage(data.image);
-                // setRecipesspoonacularSourceUrl(data.spoonacularSourceUrl);
-                // setRecipessummary(data.summary);
-                navigation.navigate('R', {Title:data.title, Image:data.image, Summary:data.summary, SourceUrl:data.spoonacularSourceUrl});
-            }) 
-            .catch(error => {
-                // Handle errors
-                console.error(error);
-            });      
-    }
+const viewDetailPage = () => {
+  fetch(apiUrl)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("API request failed");
+      }
+    })
+    .then((data) => {
+      navigation.navigate("R", { recipeData: data }); // Pass the entire data object
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
     const store_data_in_local = (key ,value) => {
         const id = key.toString();
         const data = JSON.stringify(value);

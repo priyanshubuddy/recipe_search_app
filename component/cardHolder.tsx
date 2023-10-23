@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Card_holder(props) {
     const navigation = useNavigation();
-    const apiKey = '963685318d5643ef8522cd9b003b866e';
+    const apiKey = '522685f9cadb4914a6a1df4449c5140a';
     const id = props.data.id;
     const apiUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`;
      

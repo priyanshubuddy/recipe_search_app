@@ -14,17 +14,11 @@ const Home_stack = () =>{
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Recipes" component={Card_holder} />
         <Stack.Screen name="R" children={Recipes} />
+        <Stack.Screen name="Favourite" children={Favourite} />
       </Stack.Navigator>
     );
 }
 
+ 
 
-const Favourite_stack = () =>{
-    return (
-        <Stack.Navigator>
-        <Stack.Screen name="Favourite" component={Favourite} />
-      </Stack.Navigator>
-    );
-}
-
-export {Home_stack,Favourite_stack};
+export {Home_stack};

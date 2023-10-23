@@ -1,4 +1,4 @@
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Card_holder from '../component/cardHolder';
 import { useState } from 'react';
@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Home({ navigation }) {
 
-    const apiKey = '963685318d5643ef8522cd9b003b866e';
+    const apiKey = '522685f9cadb4914a6a1df4449c5140a';
     const apiUrl = 'https://api.spoonacular.com/recipes/complexSearch';
     const [input, setInput] = useState("");
     const [Data, setdata] = useState([]);
@@ -35,7 +35,33 @@ export default function Home({ navigation }) {
                 console.error(error);
             });
     };
-    
+    let allData = [];
+    let arraydata = [];
+    const geting_asyncData = ()=>{
+        AsyncStorage.getAllKeys()
+        .then((keys) => {
+            const valuePromises = keys.map(key => {
+                return AsyncStorage.getItem(key)
+                    .then(value => {
+                        allData.push({ [key]: value });
+                    });
+            });
+
+            return Promise.all(valuePromises);
+        })
+        .then(()=>{
+            allData.map(dataItem => {
+                const key = Object.keys(dataItem)[0];
+                //const item = JSON.parse(dataItem[key]);
+                 arraydata.push(dataItem[key]);
+            })
+        }).then(()=>{
+            navigation.navigate('Favourite' ,{arrdata:arraydata});
+        })
+        .catch(error => {
+            console.error('Error retrieving data from AsyncStorage:', error);
+        });
+    }
      
     return (
         <ScrollView> 
@@ -51,6 +77,13 @@ export default function Home({ navigation }) {
                     <TextInput style={styles.inputField}
                         placeholder="Email" value={input} onChangeText={onChangeTextHandler} />
 
+                </View>
+                <View>
+                    <TouchableHighlight style={styles.Fav_btn} onPress={geting_asyncData}>
+                        <Text>
+                            go to favourite
+                        </Text>
+                    </TouchableHighlight>
                 </View>
                 <View>
                     {Data.length > 0
@@ -90,4 +123,11 @@ const styles = StyleSheet.create({
         width: 250,
         marginLeft: 20,
     },
+    Fav_btn:{
+        height:30,
+        width:150,
+        backgroundColor:'red',
+        justifyContent:'center',
+        alignItems: 'center',
+    }
 });

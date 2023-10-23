@@ -2,46 +2,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
 import { Button, StyleSheet, Text, Image, TouchableHighlight, View } from 'react-native';
 import Favourite_card from '../component/favourite_card';
+import { useRoute } from '@react-navigation/native';
 
 export default function Favourite() {
-    let allData = [];
+    const route = useRoute();
+    const receivedTitle = route.params?.arrdata;
     useEffect(() => {
-        AsyncStorage.getAllKeys()
-            .then((keys) => {
-                const valuePromises = keys.map(key => {
-                    return AsyncStorage.getItem(key)
-                        .then(value => {
-                            allData.push({ [key]: value });
-                        });
-                });
-
-                return Promise.all(valuePromises);
-            })
-            .catch(error => {
-                console.error('Error retrieving data from AsyncStorage:', error);
-            });
+        console.log(receivedTitle);
     });
 
     return (
         <View style={styles.container}>
-            {
-                allData.length === 0 ? (
-                    <View>
-                        <Text>You have not added anything</Text>
-                    </View>
-                ) : (
-                    allData.map(dataItem => {
-                        const key = Object.keys(dataItem)[0];
-                        const item = JSON.parse(dataItem[key]);
-                        console.log(item); // Log the item object
-                        return (
-                          <Favourite_card data={item}/>
-                        );
-                    })
-                )
-            }
-
-
+              
         </View>
     );
 }

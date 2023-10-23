@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
 import { Button, StyleSheet, Text, Image, TouchableHighlight, View } from 'react-native';
+import Favourite_card from '../component/favourite_card';
 
 export default function Favourite() {
     let allData = [];
@@ -15,12 +16,6 @@ export default function Favourite() {
                 });
 
                 return Promise.all(valuePromises);
-            }).then(() =>{
-                // allData.map(dataItem => {
-                //     const key = Object.keys(dataItem)[0]; // Get the key (e.g., "715497")
-                //     const item = JSON.parse(dataItem[key]);
-                //     console.log(item);
-                // })
             })
             .catch(error => {
                 console.error('Error retrieving data from AsyncStorage:', error);
@@ -30,12 +25,22 @@ export default function Favourite() {
     return (
         <View style={styles.container}>
             {
-                allData === null ? (
+                allData.length === 0 ? (
                     <View>
                         <Text>You have not added anything</Text>
                     </View>
-                ) :  <Text> hii</Text>
-                }
+                ) : (
+                    allData.map(dataItem => {
+                        const key = Object.keys(dataItem)[0];
+                        const item = JSON.parse(dataItem[key]);
+                        console.log(item); // Log the item object
+                        return (
+                          <Favourite_card data={item}/>
+                        );
+                    })
+                )
+            }
+
 
         </View>
     );

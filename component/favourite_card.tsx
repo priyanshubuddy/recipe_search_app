@@ -1,18 +1,23 @@
+import { useEffect } from "react";
 import { View,Image,Text, TouchableHighlight } from "react-native";
 
-const Favourite_card = () =>{
+const Favourite_card = (props) =>{
+    useEffect(()=>{
+        console.log(props);
+    });
+
     return (
         <View>
                 <View>
                     <Image style={styles.image}
-                source={{uri:'https://21cif.com/images/http.jpg'}
+                source={{uri:props.data.image}
                     }
                     />
                 </View>
                 <View>
                     <View>
-                        <Text> Name: </Text>
-                        <Text> this is the name of dish </Text>
+                        <Text> Name: {props.data.id} </Text>
+                        <Text> this is the name of dish {props.data.title} </Text>
                          
                     </View>
                     <View>

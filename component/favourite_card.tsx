@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { View,Image,Text, TouchableHighlight } from "react-native";
+import { View,Image,Text, TouchableHighlight,StyleSheet } from "react-native";
 
 const Favourite_card = (props) =>{
     useEffect(()=>{
@@ -32,4 +32,10 @@ const Favourite_card = (props) =>{
     );
 }
 
+const styles = StyleSheet.create({
+    image:{
+        height:50,
+        width:50,
+    }
+});
 export default Favourite_card;

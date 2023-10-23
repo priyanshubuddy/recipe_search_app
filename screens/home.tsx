@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Card_holder from '../component/cardHolder';
 import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import homeStyles from "../styles/homeStyles";
 
 export default function Home({ navigation }) {
 
@@ -99,35 +100,3 @@ export default function Home({ navigation }) {
         </ScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 20,
-    },
-    inputContainer: {
-        flexDirection: 'row',
-        borderColor: 'black',
-        borderWidth: 2,
-        justifyContent: 'center',
-        padding: 2,
-        alignItems: 'center'
-    },
-    icon: {
-        marginLeft: 5,
-    },
-    inputField: {
-        height: 42,
-        width: 250,
-        marginLeft: 20,
-    },
-    Fav_btn:{
-        height:30,
-        width:150,
-        backgroundColor:'red',
-        justifyContent:'center',
-        alignItems: 'center',
-    }
-});

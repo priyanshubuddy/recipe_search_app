@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import cardHolderStyles from "../styles/cardHolderStyles";
 
 export default function Card_holder(props) {
     const navigation = useNavigation();
@@ -77,25 +78,3 @@ export default function Card_holder(props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-    container:{
-        display: 'flex',
-        justifyContent:'center',
-        alignItems:'center',
-        marginTop:20,
-    },
-    image:{
-        height:50,
-        width:50,
-    },
-    btn:{
-        height:30,
-        marginTop:5,
-        backgroundColor:'green',
-        borderRadius:5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width:150,
-    }
-});

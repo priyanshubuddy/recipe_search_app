@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Button, StyleSheet, Text, Image, TouchableHighlight, View } from 'react-native';
 import Favourite_card from '../component/favourite_card';
 import { useRoute } from '@react-navigation/native';
+import favouriteStyles from "../styles/favouriteStyles";
 
 export default function Favourite() {
     const route = useRoute();
@@ -17,16 +18,3 @@ export default function Favourite() {
         </View>
     );
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    image: {
-        height: 40,
-        width: 40,
-    }
-});
